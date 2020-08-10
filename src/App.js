@@ -1,12 +1,14 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import Chart from "./pages/landing_page";
+import LandingPage from "./pages/landing_page";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <Chart />
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={LandingPage} exact />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
