@@ -1,127 +1,74 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { CanvasJSChart, CanvasJS } from "canvasjs-react-charts";
-import CustomInput from "../component_input/Input";
+import Chart from "react-apexcharts";
 
-const dataPoints = [];
-class Section extends React.Component {
-  state = {
-    cases: "",
-    country: "",
-    data: [],
-  };
-
-  options = {
-    theme: "light1",
-    animationEnabled: true,
-    zoomEnabled: true,
-    title: {
-      text: "Daily change of covid19",
-    },
-    axisX: {
-      valueFormatString: "DD MMM YYYY",
-      crosshair: {
-        enabled: true,
-        snapToDataPoint: true,
+const Section = () => {
+  const [countries, setCountries] = useState(null);
+  const [chartOptions, setOption] = useState({
+    options: {
+      chart: {
+        id: "covid_19_cases",
+        backgrounfColor: "black",
+        foreColor: "#ff0000",
       },
-    },
-    axisY: {
-      title: "numbers of cases",
-      crosshair: {
+      xaxis: {
+        categories: [],
+      },
+
+      dataLabels: {
         enabled: true,
-        snapToDataPoint: true,
-        labelFormatter: function (e) {
-          return CanvasJS.formatNumber(e.value, "##0.00");
-          // prefix: "$",
+      },
+      title: {
+        text: "covid summary",
+        align: "center",
+        style: {
+          fontSize: "25px",
         },
       },
     },
-    data: [
-      {
-        type: "area",
-        xValueFormatString: "DD MMM YYYY",
-        yValueFormatString: "#,##0.##",
-        dataPoints: dataPoints,
-      },
-    ],
-  };
-  handleCasesChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
-  };
+    series: [],
+  });
 
-  fetchData = async () => {
-    let chart = this.chart;
-    await axios
-      .get("https://api.covid19api.com/summary")
-      .then((res) => {
-        this.setState({ data: res.data });
-        const { Countries } = res.data;
-        let respond =
-          Countries &&
-          Countries.filter((value) => {
-            let result = value.Slug === "nigeria";
-            return result;
+  const handleCountries = () => {};
+  useEffect(() => {
+    const fetchData = async () => {
+      let arr = [];
+      await axios
+        .get("https://api.covid19api.com/summary")
+        .then((res) => {
+          const { Global, Countries } = res.data;
+          setCountries(Countries);
+          arr.push({
+            name: "population",
+            data: Object.values(Global),
           });
-        respond.map(({ NewConfirmed, Date: date }) => {
-          let x = new Date(date);
-          let y = NewConfirmed;
-          return dataPoints.push({ x, y });
-        });
-        chart.render();
-      })
-      .catch((err) => console.error(err));
-  };
-
-  updateGraph = () => {};
-  componentDidMount() {
-    this.fetchData();
-    this.setState({ cases: "NewConfirmed", country: "nigeria" });
-  }
-
-  render() {
-    const { cases, country, data } = this.state;
-
-    return (
-      <div>
-        <form>
-          <CustomInput
-            list={"case"}
-            name={"cases"}
-            value={cases}
-            onChange={this.handleCasesChange}
-          />
-          <datalist id="case">
-            <option value="NewConfirmed">NewConfirmed</option>
-            <option value="NewDeaths">NewDeaths</option>
-            <option value="NewRecovered">NewRecovered</option>
-          </datalist>
-          <CustomInput
-            list={"country"}
-            name={"country"}
-            value={country}
-            onChange={this.handleCasesChange}
-          />
-
-          <datalist id="country">
-            {data.Countries &&
-              data.Countries.map(({ Slug }, index) => (
-                <option value={Slug} key={index}>
-                  {Slug}
-                </option>
-              ))}
-          </datalist>
-        </form>
-        <section>
-          <div>
-            <CanvasJSChart
-              options={this.options}
-              onRef={(ref) => (this.chart = ref)}
-            />
-          </div>
-        </section>
-      </div>
-    );
-  }
-}
+          setOption({
+            options: {
+              ...chartOptions.options,
+              xaxis: {
+                ...chartOptions.options.xaxis,
+                categories: Object.keys(Global),
+              },
+            },
+            series: arr,
+          });
+          return;
+        })
+        .catch((err) => console.log("err.respond", err.response));
+    };
+    fetchData();
+  }, [chartOptions.options, chartOptions.series]);
+  return (
+    <div>
+      <Chart
+        options={chartOptions.options}
+        series={chartOptions.series}
+        type="line"
+        width={"100%"}
+        height={320}
+      />
+    </div>
+  );
+};
 
 export default Section;
