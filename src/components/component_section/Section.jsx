@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import axios from "axios";
 import Chart from "react-apexcharts";
@@ -6,12 +7,24 @@ import FormField from "../component_Form_Field/form";
 import Styles from "./section.module.css";
 class Section extends React.Component {
   state = {
+=======
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Chart from "react-apexcharts";
+
+const Section = () => {
+  const [countries, setCountries] = useState(null);
+  const [chartOptions, setOption] = useState({
+>>>>>>> 9b2cca0a5e6c1b18338461e0d7320faf4f96659b
     options: {
       chart: {
         id: "covid_19_cases",
         backgrounfColor: "black",
         foreColor: "#ff0000",
+<<<<<<< HEAD
         stacked: true,
+=======
+>>>>>>> 9b2cca0a5e6c1b18338461e0d7320faf4f96659b
       },
       xaxis: {
         categories: [],
