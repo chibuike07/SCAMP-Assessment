@@ -1,40 +1,32 @@
-<<<<<<< HEAD
 import React from "react";
 import axios from "axios";
 import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import FormField from "../component_Form_Field/form";
 import Styles from "./section.module.css";
+
 class Section extends React.Component {
   state = {
-=======
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Chart from "react-apexcharts";
-
-const Section = () => {
-  const [countries, setCountries] = useState(null);
-  const [chartOptions, setOption] = useState({
->>>>>>> 9b2cca0a5e6c1b18338461e0d7320faf4f96659b
     options: {
       chart: {
         id: "covid_19_cases",
-        backgrounfColor: "black",
         foreColor: "#ff0000",
-<<<<<<< HEAD
-        stacked: true,
-=======
->>>>>>> 9b2cca0a5e6c1b18338461e0d7320faf4f96659b
       },
       xaxis: {
         categories: [],
+        show: true,
       },
-
+      yaxis: {
+        showAlways: true,
+        labels: {
+          text: "heading",
+        },
+      },
       dataLabels: {
         enabled: true,
       },
       title: {
-        text: `covid-19 Global summary`,
+        text: `Covid-19 Global Daily Summary`,
         align: "center",
         style: {
           fontSize: "25px",
@@ -46,6 +38,7 @@ const Section = () => {
     data: "",
     global: null,
     type: "area",
+    globalTitle: "",
   };
 
   handleFormData = ({ target }) => {
@@ -69,15 +62,43 @@ const Section = () => {
         let types = randomType[Math.floor(Math.random() * randomType.length)];
         ApexCharts.exec("covid_19_cases", "updateSeries", [
           {
+            name: data,
             data: newSeries,
             type: types,
           },
         ]);
+        ApexCharts.exec("covid_19_cases", "updateOptions", {
+          title: {
+            text: `Covid-19 ${data.toUpperCase()} Daily Summary`,
+          },
+        });
       }
     }
   };
   handleFocus = () => {
     this.setState({ data: "" });
+  };
+
+  handleGlobalSummary = () => {
+    const { type, global } = this.state;
+
+    ApexCharts.exec("covid_19_cases", "updateSeries", [
+      {
+        name: "Global summary",
+        data: Object.values(global),
+        type: type,
+      },
+    ]);
+
+    ApexCharts.exec("covid_19_cases", "updateOptions", {
+      title: {
+        text: `Covid-19 GLOBAL Daily Summary`,
+      },
+    });
+    this.setState({
+      globalTitle: "Global Summary",
+      data: "",
+    });
   };
   fetchData = async () => {
     let arr = [];
@@ -103,7 +124,13 @@ const Section = () => {
             },
           },
           series: arr,
+          globalTitle: "Global Summary",
         });
+        ApexCharts.exec("covid_19_cases", "updateSeries", [
+          {
+            name: "Global Summary",
+          },
+        ]);
       })
       .catch((err) => console.log("err.respond", err.response));
   };
@@ -118,7 +145,7 @@ const Section = () => {
 
   render() {
     const { wrapper, formfield } = Styles;
-    const { type } = this.state;
+    const { type, data, globalTitle } = this.state;
     return (
       <div className={wrapper}>
         <Chart
@@ -127,6 +154,11 @@ const Section = () => {
           type={type}
           width={"100%"}
           height={320}
+          title={
+            data
+              ? `${data.substr(0, 1).toUpperCase()}${data.slice(1)} Summary`
+              : globalTitle
+          }
         />
         <div className={formfield}>
           <FormField
@@ -134,6 +166,7 @@ const Section = () => {
             data={this.state.data}
             countries={this.state.countries}
             reset={this.handleFocus}
+            handleGlobalSummary={this.handleGlobalSummary}
           />
         </div>
       </div>

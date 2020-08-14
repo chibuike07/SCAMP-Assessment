@@ -27,10 +27,7 @@ const Input = ({
   spellCheck,
   readOnly,
   onInput,
-<<<<<<< HEAD
   onFocus,
-=======
->>>>>>> 9b2cca0a5e6c1b18338461e0d7320faf4f96659b
 }) => {
   return (
     <input
@@ -62,10 +59,7 @@ const Input = ({
       spellCheck={spellCheck ? spellCheck : null}
       readOnly={readOnly ? readOnly : null}
       onInput={onInput ? onInput : null}
-<<<<<<< HEAD
       onFocus={onFocus ? onFocus : null}
-=======
->>>>>>> 9b2cca0a5e6c1b18338461e0d7320faf4f96659b
     />
   );
 };

@@ -1,7 +1,13 @@
 import React from "react";
 import CustomInput from "../component_input/Input";
-
-const FormField = ({ data, handleCountries, countries, reset }) => {
+import CustomButton from "../component_button/Button";
+const FormField = ({
+  data,
+  handleCountries,
+  countries,
+  reset,
+  handleGlobalSummary,
+}) => {
   return (
     <div>
       <h3>hello</h3>
@@ -21,6 +27,7 @@ const FormField = ({ data, handleCountries, countries, reset }) => {
             ))}
         </datalist>
       </form>
+      <CustomButton text={"Global Daily summary"} click={handleGlobalSummary} />
     </div>
   );
 };
