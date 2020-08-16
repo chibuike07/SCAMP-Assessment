@@ -28,6 +28,7 @@ const Input = ({
   readOnly,
   onInput,
   onFocus,
+  click,
 }) => {
   return (
     <input
@@ -60,6 +61,7 @@ const Input = ({
       readOnly={readOnly ? readOnly : null}
       onInput={onInput ? onInput : null}
       onFocus={onFocus ? onFocus : null}
+      onClick={click ? click : null}
     />
   );
 };

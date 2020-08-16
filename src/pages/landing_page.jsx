@@ -2,6 +2,7 @@
 import React from "react";
 import Header from "../components/component_header/Header";
 import Section from "../components/component_section/Section";
+
 const Landing_page = () => {
   return (
     <div>

@@ -4,7 +4,7 @@ import Chart from "react-apexcharts";
 import ApexCharts from "apexcharts";
 import FormField from "../component_Form_Field/form";
 import Styles from "./section.module.css";
-
+import Ranked from "../component_rank/Rank";
 class Section extends React.Component {
   state = {
     options: {
@@ -145,12 +145,12 @@ class Section extends React.Component {
 
   render() {
     const { wrapper, formfield } = Styles;
-    const { type, data, globalTitle } = this.state;
+    const { type, data, globalTitle, countries, options, series } = this.state;
     return (
       <div className={wrapper}>
         <Chart
-          options={this.state.options}
-          series={this.state.series}
+          options={options}
+          series={series}
           type={type}
           width={"100%"}
           height={320}
@@ -163,12 +163,13 @@ class Section extends React.Component {
         <div className={formfield}>
           <FormField
             handleCountries={this.handleFormData}
-            data={this.state.data}
-            countries={this.state.countries}
+            data={data}
+            countries={countries}
             reset={this.handleFocus}
             handleGlobalSummary={this.handleGlobalSummary}
           />
         </div>
+        <Ranked data={data} />
       </div>
     );
   }
