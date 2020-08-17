@@ -10,8 +10,17 @@
     ),
     url("../../Assets/covidimage3.jpeg");
   background-size: cover;
+  animation: display 3s ease-in;
 }
 
+@keyframes display {
+  from {
+    height: 0vh;
+  }
+  to {
+    height: 80vh;
+  }
+}
 .formfield {
   width: 20%;
   display: flex;
