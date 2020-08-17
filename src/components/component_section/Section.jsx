@@ -10,7 +10,7 @@ class Section extends React.Component {
     options: {
       chart: {
         id: "covid_19_cases",
-        foreColor: "#ff0000",
+        foreColor: "rgb(241, 237, 236)",
       },
       xaxis: {
         categories: [],
@@ -29,7 +29,7 @@ class Section extends React.Component {
         text: `Covid-19 Global Daily Summary`,
         align: "center",
         style: {
-          fontSize: "25px",
+          fontSize: "16px",
         },
       },
     },
@@ -50,11 +50,11 @@ class Section extends React.Component {
     let randomType = ["line", "area"];
     if (data) {
       let newSeries = [];
-      let searchedSlug = countries.filter(({ Slug }) => {
+      let foundSlug = countries.filter(({ Slug }) => {
         return Slug === data;
       });
-      if (searchedSlug) {
-        const [countryObject] = searchedSlug;
+      if (foundSlug) {
+        const [countryObject] = foundSlug;
         for (let value in countryObject) {
           if (Object.keys(global).includes(value))
             newSeries.push(countryObject[value]);
@@ -144,22 +144,10 @@ class Section extends React.Component {
   }
 
   render() {
-    const { wrapper, formfield } = Styles;
+    const { wrapper, formfield, chart, starRank } = Styles;
     const { type, data, globalTitle, countries, options, series } = this.state;
     return (
       <div className={wrapper}>
-        <Chart
-          options={options}
-          series={series}
-          type={type}
-          width={"100%"}
-          height={320}
-          title={
-            data
-              ? `${data.substr(0, 1).toUpperCase()}${data.slice(1)} Summary`
-              : globalTitle
-          }
-        />
         <div className={formfield}>
           <FormField
             handleCountries={this.handleFormData}
@@ -169,10 +157,27 @@ class Section extends React.Component {
             handleGlobalSummary={this.handleGlobalSummary}
           />
         </div>
-        <Ranked data={data} />
+        <div className={chart}>
+          <Chart
+            options={options}
+            series={series}
+            type={type}
+            width={"230%"}
+            height={320}
+            title={
+              data
+                ? `${data.substr(0, 1).toUpperCase()}${data.slice(1)} Summary`
+                : globalTitle
+            }
+          />
+        </div>
+        <div className={starRank}>
+          <Ranked data={data} />
+        </div>
       </div>
     );
   }
+  // https://api.covid19api.com/total/country/south-africa/status/confirmed?from=2020-08-01T00:00:00Z&to=2020-08-14T00:00:00Z
 }
 
 export default Section;

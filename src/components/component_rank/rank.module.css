@@ -1,0 +1,14 @@
+.rank_wrapper {
+  width: 100%;
+  padding-top: 50px;
+  padding-right: 10px;
+}
+
+.fieldset {
+  color: rgb(241, 237, 236);
+  border-color: rgb(241, 237, 236);
+}
+
+.fieldset legend {
+  text-transform: capitalize;
+}

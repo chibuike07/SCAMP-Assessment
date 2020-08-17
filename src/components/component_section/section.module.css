@@ -1,0 +1,31 @@
+.wrapper {
+  width: 100%;
+  display: flex;
+  height: 80vh;
+  justify-content: space-evenly;
+  background-image: linear-gradient(
+      to bottom right,
+      rgba(215, 66, 60, 1),
+      rgba(215, 66, 60, 0.9)
+    ),
+    url("../../Assets/covidimage3.jpeg");
+  background-size: cover;
+}
+
+.formfield {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}
+.chart {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.starRank {
+  width: 20%;
+  display: flex;
+  justify-content: center;
+}

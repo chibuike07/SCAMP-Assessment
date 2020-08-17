@@ -1,25 +1,18 @@
 import React from "react";
 import RatingStar from "./rating";
+import Styles from "./rank.module.css";
 const Rank = ({ data }) => {
+  const { rank_wrapper, fieldset } = Styles;
   return (
-    <div>
-      <div
-        className="list_countries"
-        style={{
-          height: 200,
-          width: "50%",
-          backgroundColor: "red",
-        }}
-      >
-        <fieldset>
-          <h3>lets see your rating on {data}</h3>
-          <legend>rank countries</legend>
+    <div className={rank_wrapper}>
+      <fieldset className={fieldset}>
+        <h3>lets see your rating on {data}</h3>
+        <legend>rank countries</legend>
 
-          {data && <RatingStar />}
+        {data && <RatingStar />}
 
-          {/* https://www.npmjs.com/package/react-star-ratings */}
-        </fieldset>
-      </div>
+        {/* https://www.npmjs.com/package/react-star-ratings */}
+      </fieldset>
     </div>
   );
 };
