@@ -27,7 +27,6 @@ const Rating = ({ data, handleRatingClick, newRating, starNum }) => {
               onMouseEnter={() => setHover(ratingValue)}
               onMouseLeave={() => setHover(null)}
               style={{ marginRight: 10 }}
-              size={"1.8x"}
               spin
             />
           </label>

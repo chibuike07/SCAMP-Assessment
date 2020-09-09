@@ -8,9 +8,13 @@ import Ranked from "../component_rank/Rank";
 class Section extends React.Component {
   state = {
     options: {
+      colors: ["#fff", "#fff", "blue"],
       chart: {
         id: "covid_19_cases",
         foreColor: "rgb(241, 237, 236)",
+      },
+      zoom: {
+        enabled: true,
       },
       xaxis: {
         categories: [],
@@ -22,8 +26,17 @@ class Section extends React.Component {
           text: "heading",
         },
       },
+      fill: {
+        colors: ["#F44336", "#E91E63", "#9C27B0"],
+      },
       dataLabels: {
         enabled: true,
+        style: {
+          colors: ["rgb(107, 24, 16)"],
+        },
+      },
+      markers: {
+        colors: ["#F44336", "#E91E63", "#9C27B0"],
       },
       title: {
         text: `Covid-19 Global Daily Summary`,

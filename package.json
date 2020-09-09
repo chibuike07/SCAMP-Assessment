@@ -1,4 +1,5 @@
 {
+  "homepage": "http://chibuike07.github.io/covid_19_records",
   "name": "covid19_summary_app",
   "version": "0.1.0",
   "private": true,
@@ -7,7 +8,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "apexcharts": "^3.20.0",
+    "apexcharts": "^3.20.1",
     "axios": "^0.19.2",
     "cra-template": "1.0.3",
     "react": "^16.13.1",
@@ -17,6 +18,8 @@
     "react-scripts": "^3.4.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
