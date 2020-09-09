@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/covid_19_records/static/css/main.cf13b1c1.chunk.css",
+    "main.js": "/covid_19_records/static/js/main.7a66cd47.chunk.js",
+    "main.js.map": "/covid_19_records/static/js/main.7a66cd47.chunk.js.map",
+    "runtime-main.js": "/covid_19_records/static/js/runtime-main.260a8f2d.js",
+    "runtime-main.js.map": "/covid_19_records/static/js/runtime-main.260a8f2d.js.map",
+    "static/js/2.23bf10f7.chunk.js": "/covid_19_records/static/js/2.23bf10f7.chunk.js",
+    "static/js/2.23bf10f7.chunk.js.map": "/covid_19_records/static/js/2.23bf10f7.chunk.js.map",
+    "index.html": "/covid_19_records/index.html",
+    "precache-manifest.ac8e8355aed956c18c19c2668d89a2c3.js": "/covid_19_records/precache-manifest.ac8e8355aed956c18c19c2668d89a2c3.js",
+    "service-worker.js": "/covid_19_records/service-worker.js",
+    "static/css/main.cf13b1c1.chunk.css.map": "/covid_19_records/static/css/main.cf13b1c1.chunk.css.map",
+    "static/js/2.23bf10f7.chunk.js.LICENSE.txt": "/covid_19_records/static/js/2.23bf10f7.chunk.js.LICENSE.txt",
+    "static/media/section.module.css": "/covid_19_records/static/media/covidimage3.5f3ac40f.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.260a8f2d.js",
+    "static/js/2.23bf10f7.chunk.js",
+    "static/css/main.cf13b1c1.chunk.css",
+    "static/js/main.7a66cd47.chunk.js"
+  ]
+}
