@@ -1,25 +1,22 @@
 {
-  "homepage": "http://chibuike07.github.io/covid_19_records",
   "name": "covid19_summary_app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-brands-svg-icons": "^5.14.0",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/react-fontawesome": "^0.1.11",
-    "apexcharts": "^3.20.1",
-    "axios": "^0.19.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "apexcharts": "^3.23.1",
     "cra-template": "1.0.3",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-apexcharts": "^1.3.7",
-    "react-dom": "^16.13.1",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3"
+    "react-scripts": "^3.4.4",
+    "react-scrollbars-custom": "^4.0.25"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -41,6 +38,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0"
+    "gh-pages": "^3.1.0",
+    "axios": ">=0.21.1"
   }
 }

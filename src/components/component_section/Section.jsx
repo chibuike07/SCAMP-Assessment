@@ -5,6 +5,8 @@ import ApexCharts from "apexcharts";
 import FormField from "../component_Form_Field/form";
 import Styles from "./section.module.css";
 import Ranked from "../component_rank/Rank";
+import ScrollBar from "react-scrollbars-custom";
+
 class Section extends React.Component {
   state = {
     options: {
@@ -88,6 +90,7 @@ class Section extends React.Component {
       }
     }
   };
+
   handleFocus = () => {
     this.setState({ data: "" });
   };
@@ -113,6 +116,7 @@ class Section extends React.Component {
       data: "",
     });
   };
+
   fetchData = async () => {
     let arr = [];
     await axios
@@ -145,7 +149,11 @@ class Section extends React.Component {
           },
         ]);
       })
-      .catch((err) => console.log("err.respond", err.response));
+      .catch((err) =>
+        err.response === undefined
+          ? false
+          : console.log("erros", err.response.data)
+      );
   };
 
   componentDidMount() {
@@ -171,18 +179,20 @@ class Section extends React.Component {
           />
         </div>
         <div className={chart}>
-          <Chart
-            options={options}
-            series={series}
-            type={type}
-            width={"230%"}
-            height={320}
-            title={
-              data
-                ? `${data.substr(0, 1).toUpperCase()}${data.slice(1)} Summary`
-                : globalTitle
-            }
-          />
+          <ScrollBar style={{ height: "50vh", width: "100%" }}>
+            <Chart
+              options={options}
+              series={series}
+              type={type}
+              width={"100%"}
+              height={420}
+              title={
+                data
+                  ? `${data.substr(0, 1).toUpperCase()}${data.slice(1)} Summary`
+                  : globalTitle
+              }
+            />
+          </ScrollBar>
         </div>
         <div className={starRank}>
           <Ranked data={data} />

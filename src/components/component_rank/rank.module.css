@@ -13,14 +13,17 @@
     opacity: 1;
   }
 }
+
 .fieldset {
   color: rgb(241, 237, 236);
   border-color: rgb(241, 237, 236);
 }
+
 .fieldset h3 {
   animation: move 3s ease-in;
   animation-iteration-count: 2;
 }
+
 @keyframes move {
   from {
     transform: translateY(300%);

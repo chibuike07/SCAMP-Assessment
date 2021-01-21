@@ -19,14 +19,16 @@
 }
 .input {
   width: 90%;
-  height: 6vh;
+  min-width: 100px;
+  height: 4vh;
   border-radius: 10px;
   outline: none;
-  padding-left: 10px;
+  padding: 10px;
 }
 
 .button {
   width: 90%;
+  min-width: 150px;
   outline: none;
   height: 3em;
   border-color: rgb(241, 237, 236);
