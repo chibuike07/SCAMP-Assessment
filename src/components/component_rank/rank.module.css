@@ -29,7 +29,7 @@
     transform: translateY(300%);
   }
   70% {
-    transform: translateX(18%);
+    transform: translateX(15%);
   }
   to {
     transform: translateY(-100);

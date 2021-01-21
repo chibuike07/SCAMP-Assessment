@@ -179,13 +179,13 @@ class Section extends React.Component {
           />
         </div>
         <div className={chart}>
-          <ScrollBar style={{ height: "50vh", width: "100%" }}>
+          <ScrollBar style={{ height: "70vh", width: "100%" }}>
             <Chart
               options={options}
               series={series}
               type={type}
               width={"100%"}
-              height={420}
+              height={320}
               title={
                 data
                   ? `${data.substr(0, 1).toUpperCase()}${data.slice(1)} Summary`

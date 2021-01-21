@@ -1,7 +1,6 @@
 .wrapper {
-  width: 100%;
   display: flex;
-  min-height: 100vh;
+  flex: 1;
   justify-content: space-evenly;
   background-image: linear-gradient(
       to bottom right,
@@ -22,33 +21,42 @@
   }
 
   to {
-    height: 80vh;
+    height: 100vh;
   }
 }
 
 .formfield {
   display: flex;
-  min-width: 150px;
-  height: 30%;
+  min-width: 300px;
   justify-content: center;
-  flex: 1;
+  flex: 0.3;
   padding: 1%;
+  margin-bottom: 1rem;
 }
 
 .chart {
   width: auto;
   min-width: 350px;
+  height: 50vh;
   display: flex;
   justify-content: center;
   padding-top: 50px;
-  flex: 2.5;
+  flex: 0.8;
+  /* background-color: blue; */
 }
 
 .starRank {
+  min-width: 250px;
   height: 30%;
   display: flex;
   justify-content: center;
-  flex: 1;
+  flex: 0.3;
   padding: 1%;
   margin-bottom: 1.5rem;
+}
+
+@media (min-width: 503px) {
+  .wrapper {
+    height: 100vh;
+  }
 }
