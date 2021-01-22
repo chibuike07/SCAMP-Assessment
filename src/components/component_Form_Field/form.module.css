@@ -9,14 +9,17 @@
   justify-content: center;
   animation: fadein 3s ease-in;
 }
+
 @keyframes fadein {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
 }
+
 .input {
   width: 90%;
   min-width: 250px;
@@ -24,6 +27,10 @@
   border-radius: 10px;
   outline: none;
   padding: 10px;
+}
+
+.form option {
+  color: red;
 }
 
 .button {
@@ -36,6 +43,7 @@
   transform: translate(5%, 20%);
   animation: button_fadein 3s ease-in;
 }
+
 @keyframes button_fadein {
   from {
     opacity: 0;

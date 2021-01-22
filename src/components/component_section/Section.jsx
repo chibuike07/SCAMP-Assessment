@@ -66,7 +66,7 @@ class Section extends React.Component {
     if (data) {
       let newSeries = [];
       let foundSlug = countries.filter(({ Slug }) => {
-        return Slug === data;
+        return Slug === data.toLowerCase();
       });
       if (foundSlug) {
         const [countryObject] = foundSlug;

@@ -26,7 +26,10 @@ const FormField = ({
         <datalist className="datalist" id="country">
           {countries &&
             countries.map((countries, index) => (
-              <option key={index}>{countries.Slug}</option>
+              <option key={index}>
+                {countries.Slug[0].toUpperCase()}
+                {countries.Slug.slice(1)}
+              </option>
             ))}
         </datalist>
       </form>
